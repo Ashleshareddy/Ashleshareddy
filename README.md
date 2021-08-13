@@ -2,7 +2,7 @@
 - 👀 I’m interested in upgrading myself with new technologies
 - 🌱 I’m currently learning aws with devops 
 - 💞️ I’m looking to collaborate on aws with devops 
-- 📫 How to reach me ashleshareddyaenugu@gmail.com
+- 📫 How to reach me ashleshareddyak@gmail.com
 
 <!---
 Ashleshareddy/Ashleshareddy is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
