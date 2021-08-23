@@ -1,34 +1,21 @@
 pipeline {
+  environment {
+    registry = "gustavoapolinario/docker-test"
+    registryCredential = ‘dockerhub’
+  }
   agent any
   stages {
-    stage('Stage1') {
-      parallel {
-        stage('Stage1') {
-          steps {
-            sh 'echo "First stage"'
-          }
-        }
-
-        stage('Stage1.1') {
-          steps {
-            sh 'echo "Parallel stage 1.1"'
-          }
-        }
-
-      }
-    }
-
-    stage('Stage2') {
+    stage('Cloning Git') {
       steps {
-        sh 'echo "2nd Stage "'
+        git 'https://github.com/gustavoapolinario/microservices-node-example-todo-frontend.git'
       }
     }
-
-    stage('Deploy') {
-      steps {
-        sh 'echo "Deploy stage"'
+    stage('Building image') {
+      steps{
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
+        }
       }
     }
-
   }
 }
