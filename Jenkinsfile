@@ -10,10 +10,10 @@ pipeline {
         git 'https://github.com/gustavoapolinario/microservices-node-example-todo-frontend.git'
       }
     }
-    stage('Building image') {
+    stage('pull image') {
       steps{
         script {
-          docker.build registry + ":$BUILD_NUMBER"
+          docker.pull registry + ":$BUILD_NUMBER"
         }
       }
     }
