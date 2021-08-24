@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "docker push 9515246808/myapp:tagname"
-    registry Credential = ‘https://hub.docker.com/_/jenkins’
+    registryCredential = ‘https://hub.docker.com/_/jenkins’
   }
   agent any
   stages {
