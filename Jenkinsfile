@@ -1,7 +1,7 @@
 pipeline {
   environment {
-    registry = "gustavoapolinario/docker-test"
-    registryCredential = ‘dockerhub’
+    registry = "docker push 9515246808/myapp:tagname"
+    registry Credential = ‘https://hub.docker.com/_/jenkins’
   }
   agent any
   stages {
@@ -10,10 +10,10 @@ pipeline {
         git 'https://github.com/gustavoapolinario/microservices-node-example-todo-frontend.git'
       }
     }
-    stage('pull image') {
+    stage('build image') {
       steps{
         script {
-          docker.pull registry + ":$BUILD_NUMBER"
+          docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
