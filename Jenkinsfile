@@ -3,7 +3,11 @@ pipeline {
     registry = "9515246808/myapp:latest"
     registryCredential = docker hub
   }
- }
+ 
+  any agent
+  
+  stages {
+   
     stage('build image') {
       steps{
         script {
@@ -11,4 +15,5 @@ pipeline {
         }
       }
     }
-  
+  }
+}
