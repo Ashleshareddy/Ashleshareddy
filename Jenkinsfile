@@ -3,6 +3,8 @@ pipeline {
     registry = "9515246808/myapp:latest"
     registryCredential = docker hub
   }
+  
+  agent
  
   stages {
    
