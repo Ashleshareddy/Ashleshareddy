@@ -1,19 +1,13 @@
 pipeline {
   environment {
-    registry = "docker push 9515246808/myapp:tagname"
+    registry = "9515246808/myapp:latest"
     registryCredential = docker hub
   }
-  agent any
-  stages {
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/gustavoapolinario/microservices-node-example-todo-frontend.git'
-      }
-    }
+ }
     stage('build image') {
       steps{
         script {
-          docker.build registry + ":$BUILD_NUMBER"
+          docker.build registry + ":docker build -t 9515246808/myapp:latest ."
         }
       }
     }
