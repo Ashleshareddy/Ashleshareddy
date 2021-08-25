@@ -2,8 +2,10 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            agent {
-                docker {
+            agent none
+           
+            {
+              docker {
                     image 'jenkins:2.60.3'
                    
              reuseNode true
