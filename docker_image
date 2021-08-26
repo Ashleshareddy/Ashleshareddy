@@ -1,0 +1,40 @@
+#!/bin/bash
+## Shell Script to run container in with centos:7 docker image
+
+usrname="------"
+password="-----"
+DIR=/root/chandukreddy/Oracle-DB
+FILE=root/chandukreddy/output
+container_name= Oracle-DB
+if[ -d "$DIR" ];
+then
+printf '%s\n' "Oracle-DB dir ($DIR)"
+rm -rf "$DIR"
+else
+echo "now no Oracle-DB a dir"
+fi
+result=$( sudo docker images -q Oracle-DB )
+if [[ -n "$result" ]]; then
+echo "image exists"
+sudo docker rmi -f Oracle-DB
+else
+echo "No such image"
+fi
+echo "change the dir"
+echo "delete output file"
+cd /root/chandukreddy/Oracle-DB/
+echo "build the docker image"
+sudo docker build -t centos:7 .
+result=$( docker ps -q -f name=Oracle-DB )
+if [[ $? -eq 0 ]]; then
+echo "Container exists"
+sudo docker container rm -f Oracle-DB
+echo "Deleted the existing docker container"
+else
+echo "No such container"
+fi
+echo "Deploying the updated container"
+sudo docker run -it -p 3000:3000 --name Oracle-DB $OUTPUT
+echo "Deploying the container"
+~                                                                                                                                                                                    
+~                      
